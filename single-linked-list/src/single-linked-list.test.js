@@ -48,4 +48,72 @@ describe("single linked list", () => {
     expect(singleLinkedList.head.value).toBe(1000);
     expect(singleLinkedList.tail.value).toBe(2000);
   });
+
+  it("should check if a node is head and return true", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    const head = singleLinkedList.head;
+
+    expect(singleLinkedList.isHead(head)).toBe(true);
+  });
+
+  it("should check if a node is head and return false", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    const secondElement = singleLinkedList.head.next;
+
+    expect(singleLinkedList.isHead(secondElement)).toBe(false);
+  });
+
+  it("should check if a node is tail and return true", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    const tail = singleLinkedList.tail;
+
+    expect(singleLinkedList.isTail(tail)).toBe(true);
+  });
+
+  it("should check if a node is tail and return false", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    const head = singleLinkedList.head;
+
+    expect(singleLinkedList.isTail(head)).toBe(false);
+  });
+
+  it("should check if a value exists on the list and return true", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    expect(singleLinkedList.contains(3000)).toBe(true);
+  });
+
+  it("should check if a value exists on the list and return false", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    expect(singleLinkedList.contains(4000)).toBe(false);
+  });
 });

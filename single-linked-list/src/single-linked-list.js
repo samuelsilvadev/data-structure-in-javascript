@@ -35,6 +35,24 @@ class SingleLinkedList {
     this._tail = currentNode;
   }
 
+  isHead(node) {
+    return node === this._head;
+  }
+
+  isTail(node) {
+    return node === this._tail;
+  }
+
+  contains(value) {
+    let currentNode = this._head;
+
+    while (currentNode && currentNode.value !== value) {
+      currentNode = currentNode.next;
+    }
+
+    return !!currentNode && currentNode.value === value;
+  }
+
   get head() {
     return this._head;
   }
