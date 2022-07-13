@@ -24,6 +24,45 @@ class SingleLinkedList {
     this._tail = newNode;
   }
 
+  remove(value) {
+    let currentNode = this._head;
+
+    if (currentNode.value === undefined) {
+      return;
+    }
+
+    if (currentNode.value === value) {
+      const nodeAfterHead = currentNode.next;
+
+      this._head = nodeAfterHead;
+
+      return;
+    }
+
+    while (
+      currentNode &&
+      currentNode.next &&
+      currentNode.next.value !== value
+    ) {
+      currentNode = currentNode.next;
+    }
+
+    const nodeAfterNext = currentNode.next.next;
+    const nextNode = currentNode.next;
+
+    if (this.isTail(nextNode)) {
+      this._tail = currentNode;
+    }
+
+    currentNode.next = nodeAfterNext;
+
+    this._removeReferenceOfNode(nextNode);
+  }
+
+  _removeReferenceOfNode(node) {
+    node.next = null;
+  }
+
   removeTail() {
     let currentNode = this._head;
 

@@ -116,4 +116,73 @@ describe("single linked list", () => {
 
     expect(singleLinkedList.contains(4000)).toBe(false);
   });
+
+  it("should remove a value from the list", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    singleLinkedList.remove(2000);
+
+    expect(singleLinkedList.contains(2000)).toBe(false);
+  });
+
+  it("should remove head from the list", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    singleLinkedList.remove(1000);
+
+    expect(singleLinkedList.contains(1000)).toBe(false);
+    expect(singleLinkedList.head.value).toBe(2000);
+  });
+
+  it("should remove from list with only one item", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+
+    singleLinkedList.remove(1000);
+
+    expect(singleLinkedList.contains(1000)).toBe(false);
+    expect(singleLinkedList.head).toBe(null);
+  });
+
+  it("should remove tail from the list", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+    singleLinkedList.insert(2000);
+    singleLinkedList.insert(3000);
+
+    singleLinkedList.remove(3000);
+
+    expect(singleLinkedList.contains(3000)).toBe(false);
+    expect(singleLinkedList.tail.value).toBe(2000);
+  });
+
+  it("should remove correct if list is only one item", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.insert(1000);
+
+    singleLinkedList.remove(1000);
+
+    expect(singleLinkedList.contains(1000)).toBe(false);
+    expect(singleLinkedList.head).toBe(null);
+  });
+
+  it("should not break if try to remove of an empty list", () => {
+    const singleLinkedList = new SingleLinkedList();
+
+    singleLinkedList.remove(1000);
+
+    expect(singleLinkedList.contains(1000)).toBe(false);
+    expect(singleLinkedList.head).toEqual({ value: undefined, next: null });
+  });
 });
