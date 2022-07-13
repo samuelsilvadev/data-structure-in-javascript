@@ -24,15 +24,24 @@ class SingleLinkedList {
     this._tail = newNode;
   }
 
+  removeTail() {
+    let currentNode = this._head;
+
+    while (currentNode.next !== this._tail) {
+      currentNode = currentNode.next;
+    }
+
+    currentNode.next = null;
+    this._tail = currentNode;
+  }
+
   get head() {
     return this._head;
+  }
+
+  get tail() {
+    return this._tail;
   }
 }
 
 module.exports = SingleLinkedList;
-
-const singleLinkedList = new SingleLinkedList();
-
-singleLinkedList.insert(1000);
-singleLinkedList.insert(2000);
-singleLinkedList.insert(3000);

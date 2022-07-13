@@ -34,4 +34,18 @@ describe("single linked list", () => {
 
     expect(node).toBe(null);
   });
+
+  it("should remove the tail", () => {
+    const singleLinkedList = new SingleLinkedList();
+    const values = [1000, 2000, 3000];
+
+    singleLinkedList.insert(values[0]);
+    singleLinkedList.insert(values[1]);
+    singleLinkedList.insert(values[2]);
+
+    singleLinkedList.removeTail();
+
+    expect(singleLinkedList.head.value).toBe(1000);
+    expect(singleLinkedList.tail.value).toBe(2000);
+  });
 });
