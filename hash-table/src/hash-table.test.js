@@ -36,4 +36,15 @@ describe("hash table", () => {
 
     expect(hashTable.get("name")).toBe("overridden name");
   });
+
+  it("should remove an item", () => {
+    const hashTable = new HashTable();
+
+    hashTable.insert({ key: "name", value: "a random name" });
+    hashTable.insert({ key: "age", value: 20 });
+
+    hashTable.remove("age");
+
+    expect(hashTable.get("age")).toBe(null);
+  });
 });

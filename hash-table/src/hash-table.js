@@ -45,12 +45,23 @@ class HashTable {
     const tupleWithKeyAndValue = this._storage[indexToGet].find(
       ([listKey]) => listKey === key
     );
-    const value = tupleWithKeyAndValue[1];
 
-    return value;
+    if (tupleWithKeyAndValue && tupleWithKeyAndValue[1]) {
+      const value = tupleWithKeyAndValue[1];
+
+      return value;
+    }
+
+    return null;
   }
 
-  remove(key) {}
+  remove(key) {
+    const indexToRemove = this._hash(key);
+
+    this._storage[indexToRemove] = this._storage[indexToRemove].filter(
+      ([listKey]) => listKey !== key
+    );
+  }
 
   /**
    * Hashes string value into an integer that can be mapped to an array index
