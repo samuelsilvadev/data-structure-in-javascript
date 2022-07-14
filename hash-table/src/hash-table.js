@@ -69,12 +69,4 @@ class HashTable {
   }
 }
 
-const hashTable = new HashTable();
-
-hashTable.insert({ key: "name", value: "samuel" });
-hashTable.insert({ key: "name", value: "katty" });
-hashTable.insert({ key: "age", value: 18 });
-
-console.log(hashTable.get("name"));
-
 module.exports = HashTable;
